@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using AraucariasBookStoreWeb.Data;
+using AraucariasBookStore.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 

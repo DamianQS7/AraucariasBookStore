@@ -1,5 +1,5 @@
-﻿using AraucariasBookStoreWeb.Data;
-using AraucariasBookStoreWeb.Models;
+﻿using AraucariasBookStore.DataAccess;
+using AraucariasBookStore.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AraucariasBookStoreWeb.Controllers

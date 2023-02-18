@@ -1,4 +1,4 @@
-namespace AraucariasBookStoreWeb.Models
+namespace AraucariasBookStore.Models
 {
     public class ErrorViewModel
     {

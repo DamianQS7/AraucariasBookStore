@@ -1,7 +1,7 @@
-﻿using AraucariasBookStoreWeb.Models;
+﻿using AraucariasBookStore.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AraucariasBookStoreWeb.Data
+namespace AraucariasBookStore.DataAccess
 {
     public class ApplicationDbContext : DbContext
     {
