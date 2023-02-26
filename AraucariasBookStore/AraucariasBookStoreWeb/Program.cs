@@ -13,7 +13,7 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 string? connStr = builder.Configuration.GetConnectionString("ConnString");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connStr));
 
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 

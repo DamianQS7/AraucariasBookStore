@@ -8,16 +8,16 @@ namespace AraucariasBookStoreWeb.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ICategoryRepository _dbContext;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(ICategoryRepository dbContext)
+        public CategoryController(IUnitOfWork dbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = dbContext;
         }
 
         public IActionResult CategoryList()
         {
-            IEnumerable<Category> categoryList = _dbContext.GetAll();
+            IEnumerable<Category> categoryList = _unitOfWork.Category.GetAll();
             return View(categoryList);
         }
 
@@ -37,8 +37,8 @@ namespace AraucariasBookStoreWeb.Controllers
             }
             if(ModelState.IsValid)
             {
-                _dbContext.Add(category);
-                _dbContext.Save();
+                _unitOfWork.Category.Add(category);
+                _unitOfWork.Save();
                 TempData["success"] = "The category has been successfully added";
                 return RedirectToAction("CategoryList");
             }
@@ -52,7 +52,7 @@ namespace AraucariasBookStoreWeb.Controllers
             if(id == null || id == 0)
                 return NotFound();
 
-            Category? category = _dbContext.GetFirstOrDefault(x => x.Id == id);
+            Category? category = _unitOfWork.Category.GetFirstOrDefault(x => x.Id == id);
 
             if (category == null)
                 return NotFound();
@@ -70,8 +70,8 @@ namespace AraucariasBookStoreWeb.Controllers
             }
             if (ModelState.IsValid)
             {
-                _dbContext.Update(category);
-                _dbContext.Save();
+                _unitOfWork.Category.Update(category);
+                _unitOfWork.Save();
                 TempData["success"] = "The category has been successfully updated";
                 return RedirectToAction("CategoryList");
             }
@@ -85,7 +85,7 @@ namespace AraucariasBookStoreWeb.Controllers
             if (id == null || id == 0)
                 return NotFound();
 
-            Category? category = _dbContext.GetFirstOrDefault(x =>x.Id == id);
+            Category? category = _unitOfWork.Category.GetFirstOrDefault(x =>x.Id == id);
 
             if (category == null)
                 return NotFound();
@@ -96,8 +96,8 @@ namespace AraucariasBookStoreWeb.Controllers
         [HttpPost]
         public IActionResult Delete(Category category)
         {
-            _dbContext.Remove(category);
-            _dbContext.Save();
+            _unitOfWork.Category.Remove(category);
+            _unitOfWork.Save();
             TempData["success"] = "The category has been successfully deleted";
             return RedirectToAction("CategoryList");
         }
