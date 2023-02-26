@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using AraucariasBookStore.DataAccess;
+using AraucariasBookStore.DataAccess.Repository.IRepository;
+using AraucariasBookStore.DataAccess.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,8 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 //Setting up the database before the app builds.
 string? connStr = builder.Configuration.GetConnectionString("ConnString");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connStr));
+
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 var app = builder.Build();
 
