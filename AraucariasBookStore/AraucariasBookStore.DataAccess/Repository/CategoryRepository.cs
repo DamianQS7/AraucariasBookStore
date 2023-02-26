@@ -24,7 +24,7 @@ namespace AraucariasBookStore.DataAccess.Repository
 
         public void Update(Category category)
         {
-            _dbContext.Update(category);
+            _dbContext.Categories.Update(category);
         }
     }
 }
