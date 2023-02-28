@@ -1,4 +1,5 @@
 ﻿using AraucariasBookStore.DataAccess.Repository.IRepository;
+using AraucariasBookStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,12 @@ namespace AraucariasBookStore.DataAccess.Repository
         {
             _dbContext = dbContext;
             Category = new CategoryRepository(_dbContext);
+            CoverTypeRepo = new CoverTypeRepository(_dbContext);
         }
 
         public ICategoryRepository Category { get; private set; }
+
+        public ICoverTypeRepository CoverTypeRepo { get; private set; }
 
         public void Save()
         {

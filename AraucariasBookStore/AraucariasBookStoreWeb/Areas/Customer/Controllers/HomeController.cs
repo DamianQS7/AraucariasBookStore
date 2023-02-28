@@ -3,7 +3,7 @@ using AraucariasBookStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace AraucariasBookStoreWeb.Controllers
+namespace AraucariasBookStoreWeb.Areas.Customer.Controllers
 {
     public class HomeController : Controller
     {

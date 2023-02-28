@@ -11,7 +11,8 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 //Setting up the database before the app builds.
 string? connStr = builder.Configuration.GetConnectionString("ConnString");
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connStr));
+string? assemblyName = "AraucariasBookStore.DataAccess";
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connStr, b => b.MigrationsAssembly(assemblyName)));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -34,6 +35,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

@@ -4,7 +4,7 @@ using AraucariasBookStore.DataAccess.Repository.IRepository;
 using AraucariasBookStore.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AraucariasBookStoreWeb.Controllers
+namespace AraucariasBookStoreWeb.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
@@ -31,25 +31,25 @@ namespace AraucariasBookStoreWeb.Controllers
         public IActionResult Create(Category category)
         {
             // Added a custom validation
-            if(category.Name.Length < 2)
+            if (category.Name.Length < 2)
             {
                 ModelState.AddModelError("Name", "The name must be at least 2 characters long");
             }
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Add(category);
                 _unitOfWork.Save();
                 TempData["success"] = "The category has been successfully added";
                 return RedirectToAction("CategoryList");
             }
-            
+
             return View();
         }
 
         [HttpGet]
         public IActionResult Edit(int? id)
         {
-            if(id == null || id == 0)
+            if (id == null || id == 0)
                 return NotFound();
 
             Category? category = _unitOfWork.Category.GetFirstOrDefault(x => x.Id == id);
@@ -85,7 +85,7 @@ namespace AraucariasBookStoreWeb.Controllers
             if (id == null || id == 0)
                 return NotFound();
 
-            Category? category = _unitOfWork.Category.GetFirstOrDefault(x =>x.Id == id);
+            Category? category = _unitOfWork.Category.GetFirstOrDefault(x => x.Id == id);
 
             if (category == null)
                 return NotFound();
