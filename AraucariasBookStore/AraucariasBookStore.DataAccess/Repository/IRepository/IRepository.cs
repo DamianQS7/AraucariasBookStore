@@ -19,7 +19,7 @@ namespace AraucariasBookStore.DataAccess.Repository.IRepository
         /// Like when we say _dbContext.Categories.ToList();
         /// </summary>
         /// <returns>We are returning a collection of the specific class or entity</returns>
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(string? includeProperties = null);
 
         /// <summary>
         /// It will add the entity to a DbSet. That is why the return datatype is Void.
@@ -41,7 +41,7 @@ namespace AraucariasBookStore.DataAccess.Repository.IRepository
         /// </summary>
         /// <param name="filter">This lambda expression will act as a filter to find and retrieve a specific record from a collection.</param>
         /// <returns>The return data type is T because it will return a single entity (Category, Book, etc.)</returns>
-        T GetFirstOrDefault(Expression<Func<T, bool>> filter);
+        T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null);
 
 
     }

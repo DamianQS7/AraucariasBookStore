@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\product.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\product.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
@@ -21,6 +29,14 @@
     <ProjectReference Include="..\AraucariasBookStore.DataAccess\AraucariasBookStore.DataAccess.csproj" />
     <ProjectReference Include="..\AraucariasBookStore.Models\AraucariasBookStore.Models.csproj" />
     <ProjectReference Include="..\AraucariasBookStore.Utility\AraucariasBookStore.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\products\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\product.js" />
   </ItemGroup>
 
 </Project>

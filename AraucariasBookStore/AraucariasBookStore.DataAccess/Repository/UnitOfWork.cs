@@ -17,11 +17,12 @@ namespace AraucariasBookStore.DataAccess.Repository
             _dbContext = dbContext;
             Category = new CategoryRepository(_dbContext);
             CoverTypeRepo = new CoverTypeRepository(_dbContext);
+            Product = new ProductRepository(_dbContext);
         }
 
         public ICategoryRepository Category { get; private set; }
-
         public ICoverTypeRepository CoverTypeRepo { get; private set; }
+        public IProductRepository Product { get; private set; }
 
         public void Save()
         {

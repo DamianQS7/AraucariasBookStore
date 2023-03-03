@@ -9,8 +9,8 @@ namespace AraucariasBookStore.DataAccess.Repository.IRepository
     public interface IUnitOfWork
     {
         ICategoryRepository Category { get; }
-
         ICoverTypeRepository CoverTypeRepo { get; }
+        IProductRepository Product { get; }
 
         void Save();
     }
